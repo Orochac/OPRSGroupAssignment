@@ -7,7 +7,7 @@
 clear
 %% Get parameters
 getParameters;
-%% Generate instances and run algorithms
+%% Generate instances, run algorithms and stores results
 resultSummary = table; % create empty table for storing results
 for i=1:nmbrRelayInitialLoc
     s0 = rand(1, 2);
@@ -19,24 +19,26 @@ for i=1:nmbrRelayInitialLoc
             sensorLocations = sensorSet(1:nmbrSensors, 2:3);
             for l=1:nmbrAlgorithms;
                 % Run algorithm here
+                timerStart1 = tic;
                 switch l
                     case 1 % Algorithm 1
-                        [smin, fmin, k, t] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Algorithm#1'};
                     case 2 % Algorithm 2
-                        [smin, fmin, k, t] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Algorithm#2'};
                     case 3 % Algorithm 3
-                        [smin, fmin, k, t] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Algorithm#3'};
                 end
+                timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
                 s0Str = convertCoordntToStr(s0);
                 sminStr = convertCoordntToStr(smin);
-                resultTemp = table(s0Str, j, nmbrSensors, nameAlgorithm, sminStr, fmin, k, t); %table for storing results
+                resultTemp = table(s0Str, j, nmbrSensors, nameAlgorithm, sminStr, fmin, k, timeElapsed1); %table for storing results
                 resultSummary = [resultSummary; resultTemp];
             end
         end
     end
 end
-resultSummary.Properties.VariableNames = {'Relay Initial Location', 'Sensor Set Nmbr', 'Nmbr of Sensors', 'Algorithm', 'smin', 'fmin', 'k', 't'}
+resultSummary.Properties.VariableNames = {'Relay Initial Location', 'Sensor Set Nmbr', 'Nmbr of Sensors', 'Algorithm', 'smin', 'fmin', 'Nmbr of Iterations', 'Run Time'}
