@@ -10,7 +10,7 @@ getParameters;
 %% Generate instances, run algorithms and stores results
 resultSummary = table; % create empty table for storing results
 for i=1:nmbrRelayInitialLoc
-    s0 = rand(1, 2);
+    s0 = rand(1, 2); % random start location from (0,0) to (1,1)
     for j = 1:nmbrSensorSets
         sensorSet = [transpose(1:max(sensorQuantity)),rand(max(sensorQuantity),2)];
         for k=1:length(sensorQuantity)
@@ -22,10 +22,10 @@ for i=1:nmbrRelayInitialLoc
                 timerStart1 = tic;
                 switch l
                     case 1 % Algorithm 1
-                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Algorithm#1'};
                     case 2 % Algorithm 2
-                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        [smin, fmin, k] = singleGuess(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Algorithm#2'};
                     case 3 % Algorithm 3
                         [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
@@ -41,4 +41,4 @@ for i=1:nmbrRelayInitialLoc
         end
     end
 end
-resultSummary.Properties.VariableNames = {'Relay Initial Location', 'Sensor Set Nmbr', 'Nmbr of Sensors', 'Algorithm', 'smin', 'fmin', 'Nmbr of Iterations', 'Run Time'}
+resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'SensorSetNmbr', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofIterations', 'RunTime'}

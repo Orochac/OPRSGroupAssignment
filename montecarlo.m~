@@ -1,0 +1,23 @@
+%% Housingkeeping
+% Inputs
+    % s0: initial relay location, 1 by 2 matrix
+    % nmbrSensors: number of sensors, scalor
+    % sensorLocations: sensor locations, m by 2 matrix
+% Outputs
+    % smin: optimal relay location, 1 by 2 matrix
+    % fmin: optimal objective value, scalor
+    % k: number of iterations
+% version history:
+    % OR, Created for MAST30013 Project, 2021/05/16
+%% Monte carlo simulation, 
+% this will be the baseline for the project, essentially we guess a whole
+% bunch of relay locations and pick the best one. I guess iterations = k
+function [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations)
+    simulationIterrations = 1000;
+    fscores = zeros(1,numSensors);
+    slocations = zeros(2, numSensors);
+    for i = 1:simulationIterrations:
+        
+    end
+
+end
