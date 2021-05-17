@@ -23,7 +23,7 @@ for i=1:nmbrRelayInitialLoc
                 switch l
                     case 1 % Algorithm 1
                         [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Algorithm#1'};
+                        nameAlgorithm = {'montecarlo'};
                     case 2 % Algorithm 2
                         [smin, fmin, k] = singleGuess(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'singleGuess'};
