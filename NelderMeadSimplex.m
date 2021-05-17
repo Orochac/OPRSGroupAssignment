@@ -14,7 +14,7 @@
     % JW,  2021/05/17, Created for MAST30013 Project
 %% Function
 function [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations)
-    f = @(x)P(x, nmbrSensors, sensorLocations) % create a new objective function which is parameterised only on s0
-    [smin, fmin] = fminsearch(f, s0)
-    k=0 % unknown because it's a matlab built in function
+    f = @(x)P(x, nmbrSensors, sensorLocations); % create a new objective function which is parameterised only on s0
+    [smin, fmin] = fminsearch(f, s0);
+    k=0; % unknown because it's a matlab built in function
 end
