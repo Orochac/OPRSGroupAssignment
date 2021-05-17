@@ -13,7 +13,7 @@
 % this will be the baseline for the project, essentially we guess a whole
 % bunch of relay locations and pick the best one. I guess iterations = k
 function [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations)
-    simulationIterrations = 10000;%number of simulations
+    simulationIterrations = 1000;%number of simulations
     fscores = zeros(nmbrSensors, 1);%create vector of simulation results
     slocations = rand(nmbrSensors, 2);%create matrix of relay locations
     for i = 1:simulationIterrations
