@@ -10,7 +10,7 @@
 % version history:
     % JW,  2021/05/17, Created for MAST30013 Project
 %% Function
-function [smin, fmin, k] = builtInFminsearch(s0, nmbrSensors, sensorLocations)
+function [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations)
     [smin, fmin] = fminsearch(@P, s0)
     k=0 % unknown because it's a matlab built in function
 end
