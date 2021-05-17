@@ -26,7 +26,7 @@ for i=1:nmbrRelayInitialLoc
                         nameAlgorithm = {'Algorithm#1'};
                     case 2 % Algorithm 2
                         [smin, fmin, k] = singleGuess(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Algorithm#2'};
+                        nameAlgorithm = {'Nelder-Mead Simplex'};
                     case 3 % Algorithm 3
                         [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Algorithm#3'};
