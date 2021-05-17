@@ -42,3 +42,5 @@ for i=1:nmbrRelayInitialLoc
     end
 end
 resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'SensorSetNmbr', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofIterations', 'RunTime'}
+%% Export result to csv file
+writetable(resultSummary, 'resultSummary.txt', 'Delimiter', ',')
