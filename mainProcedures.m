@@ -29,7 +29,7 @@ for i=1:nmbrRelayInitialLoc
                         nameAlgorithm = {'singleGuess'};
                     case 3 % Algorithm 3
                         [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Algorithm#3'};
+                        nameAlgorithm = {'Nelder-Mead Simplex'};
                 end
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
