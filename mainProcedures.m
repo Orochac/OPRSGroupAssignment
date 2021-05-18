@@ -12,7 +12,7 @@ resultSummary = table; % create empty table for storing results
 for i=1:nmbrRelayInitialLoc
     s0 = rand(1, 2); % random start location from (0,0) to (1,1)
     for j = 1:nmbrSensorSets
-		sensorSet = generateSensorSet(sensorQuantity, j);
+		[sensorSet, sensorScenario] = generateSensorSet(sensorQuantity, j);
         for k=1:length(sensorQuantity)
             s0;
             nmbrSensors = sensorQuantity(1,k);
@@ -41,7 +41,7 @@ for i=1:nmbrRelayInitialLoc
                 % Store results
                 s0Str = convertCoordntToStr(s0);
                 sminStr = convertCoordntToStr(smin);
-                resultTemp = table(s0Str, j, nmbrSensors, nameAlgorithm, sminStr, fmin, k, timeElapsed1); %table for storing results
+                resultTemp = table(s0Str, sensorScenario, nmbrSensors, nameAlgorithm, sminStr, fmin, k, timeElapsed1); %table for storing results
                 resultSummary = [resultSummary; resultTemp];
             end
         end
