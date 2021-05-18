@@ -14,10 +14,10 @@
 % bunch of relay locations and pick the best one. I guess iterations = k
 function [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations)
     simulationIterrations = 100;%number of simulations
-    fscores = zeros(nmbrSensors, 1);%create vector of simulation results
-    slocations = rand(nmbrSensors, 2);%create matrix of relay locations
+    fscores = zeros(simulationIterrations, 1);%create vector of simulation results
+    slocations = rand(simulationIterrations, 2);%create matrix of relay locations
     for i = 1:simulationIterrations
-        fscores(i) = P(slocations, nmbrSensors, sensorLocations);
+        fscores(i) = P(slocations(i,:), nmbrSensors, sensorLocations);
     end
     k = simulationIterrations;
     [fmin, I] = min(fscores);
