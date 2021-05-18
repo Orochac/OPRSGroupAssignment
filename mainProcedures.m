@@ -30,6 +30,12 @@ for i=1:nmbrRelayInitialLoc
                     case 3 % Algorithm 3
                         [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Nelder-Mead Simplex'};
+					case 4 % Algorithm 4
+                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        nameAlgorithm = {'Place Holder'};
+                    case 5 % Algorithm 4
+                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        nameAlgorithm = {'Place Holder'};
                 end
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
