@@ -19,6 +19,25 @@ function [sensorSet] = generateSensorSet(sensorQuantity, j)
             maxLocations = max(sensorLocations);
             sensorLocations = sensorLocations ./ maxLocations; % normalised x1, x2 to be between 0 and 1
             sensorSet = [transpose(1:max(sensorQuantity)),sensorLocations];
+        case 3 % clustered - centre
+            sensorLocations = randn(max(sensorQuantity),2);
+            maxLocations = max(sensorLocations);
+            minLocations = min(sensorLocations);
+            for i = 1:length(sensorLocations); % normalise x1, x2
+                if sensorLocations(i,1)>0 % x1
+                   sensorLocations(i,1) = sensorLocations(i,1) / maxLocations(1,1);
+                else
+                   sensorLocations(i,1) = sensorLocations(i,1) / abs(minLocations(1,1));
+                end
+                if sensorLocations(i,2)>0 % x2
+                   sensorLocations(i,2) = sensorLocations(i,2) / maxLocations(1,2);
+                else
+                   sensorLocations(i,2) = sensorLocations(i,2) / abs(minLocations(1,2));
+                end
+            end
+            sensorLocations = sensorLocations / 2; % compress x1, x2 to be between -0.5 & 0.5
+            sensorLocations = sensorLocations + 0.5; % shift x1, x2 to be between 0 & 1
+            sensorSet = [transpose(1:max(sensorQuantity)),sensorLocations];
     end
     % scatter(sensorLocations(:,1), sensorLocations(:,2)) % visualise sensor locations
 end
