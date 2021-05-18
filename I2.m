@@ -12,12 +12,12 @@
 %% I2 penalty function, 
 % This is the I2 penalty method with the variable alpha
 function [smin, fmin, k] = I2(s0, nmbrSensors, sensorLocations)
-    alpha = 1;%alpha value
+    alpha = 10;%alpha value
     k =0;
     fscores = zeros(nmbrSensors, 1);%create vector of each result
     slocations = zeros(nmbrSensors, 2);%create matrix of relay locations
     for i = 1:nmbrSensors %need to minimise each of the cases
-        farthestSensor = sensorLocations(i,:)
+        farthestSensor = sensorLocations(i,:);
         [slocations(i,:), fscores(i), itter] = I2Optimise(s0, nmbrSensors, sensorLocations, farthestSensor, alpha);
         k = k+itter;
         %check if valid

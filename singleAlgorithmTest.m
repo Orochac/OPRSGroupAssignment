@@ -9,7 +9,7 @@ clear
 nmbrRelayInitialLoc = 1;
 nmbrSensorSets = 1;
 nmbrAlgorithms = 1;
-sensorLength = 2;
+sensorLength = 5;
 sensorQuantity = [3, 6, 12, 24, 48, 96, 192, 384];
 %% Generate instances, run algorithms and stores results
 resultSummary = table; % create empty table for storing results

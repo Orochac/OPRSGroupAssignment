@@ -18,7 +18,7 @@ function t = I2StepMin(s, d, nmbrSensors, sensorLocations, farthestSensor, alpha
    function f = stepSize(t)
        f = I2Function(s+t*transpose(d), nmbrSensors, sensorLocations, farthestSensor, alpha);
    end
-   tlo = 0;
-   thigh = 10;
+   tlo = 0.01;
+   thigh = 2;
    t = fminbnd(@stepSize,tlo,thigh);
 end
