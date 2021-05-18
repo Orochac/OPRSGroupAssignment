@@ -12,7 +12,7 @@ resultSummary = table; % create empty table for storing results
 for i=1:nmbrRelayInitialLoc
     s0 = rand(1, 2); % random start location from (0,0) to (1,1)
     for j = 1:nmbrSensorSets
-        sensorSet = [transpose(1:max(sensorQuantity)),rand(max(sensorQuantity),2)];
+		sensorSet = generateSensorSet(sensorQuantity, j);
         for k=1:length(sensorQuantity)
             s0;
             nmbrSensors = sensorQuantity(1,k);
