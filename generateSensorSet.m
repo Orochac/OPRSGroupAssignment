@@ -1,24 +1,27 @@
 %% Housingkeeping
 % Inputs
     % sensorQuantity: number of sensors needs to be generated, vector
-    % j: sensor set#, scaler
+    % j: sensor set#, scalar
 % Outputs
     % sensorSet: [sensor#, x1, x2], vector
+    % sensorScenario: describes the distribution of sensor locations, scalar
 % Script description:
     % 
 % version history:
     % JW,  2021/05/18, Created for MAST30013 Project
 %% Function
-function [sensorSet] = generateSensorSet(sensorQuantity, j)
+function [sensorSet, sensorScenario] = generateSensorSet(sensorQuantity, j)
     switch j
         case 1 % randomly distributed
             sensorLocations = rand(max(sensorQuantity),2);
             sensorSet = [transpose(1:max(sensorQuantity)), sensorLocations];
+            sensorScenario = {'Evenly Distributed'};
         case 2 % clsutered - corner
             sensorLocations = abs(randn(max(sensorQuantity),2)); % abs(x1), abs(x2)
             maxLocations = max(sensorLocations);
             sensorLocations = sensorLocations ./ maxLocations; % normalised x1, x2 to be between 0 and 1
             sensorSet = [transpose(1:max(sensorQuantity)),sensorLocations];
+            sensorScenario = {'Clsutered - Corner'};
         case 3 % clustered - centre
             sensorLocations = randn(max(sensorQuantity),2);
             maxLocations = max(sensorLocations);
@@ -38,6 +41,7 @@ function [sensorSet] = generateSensorSet(sensorQuantity, j)
             sensorLocations = sensorLocations / 2; % compress x1, x2 to be between -0.5 & 0.5
             sensorLocations = sensorLocations + 0.5; % shift x1, x2 to be between 0 & 1
             sensorSet = [transpose(1:max(sensorQuantity)),sensorLocations];
+            sensorScenario = {'Clsutered - Centre'};
     end
     % scatter(sensorLocations(:,1), sensorLocations(:,2)) % visualise sensor locations
 end
