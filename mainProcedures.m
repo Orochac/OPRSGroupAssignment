@@ -23,13 +23,13 @@ for i=1:nmbrRelayInitialLoc
                 switch l
                     case 1 % Algorithm 1
                         [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Algorithm#1'};
+                        nameAlgorithm = {'montecarlo'};
                     case 2 % Algorithm 2
                         [smin, fmin, k] = singleGuess(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Algorithm#2'};
+                        nameAlgorithm = {'singleGuess'};
                     case 3 % Algorithm 3
-                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Algorithm#3'};
+                        [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations);
+                        nameAlgorithm = {'Nelder-Mead Simplex'};
                 end
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
@@ -41,4 +41,6 @@ for i=1:nmbrRelayInitialLoc
         end
     end
 end
-resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'SensorSetNmbr', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofIterations', 'RunTime'}
+resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'SensorSetNmbr', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofFcal', 'RunTime'}
+%% Export results to csv file
+writetable(resultSummary, 'resultSummary.txt', 'Delimiter', ',')
