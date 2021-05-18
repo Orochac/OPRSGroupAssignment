@@ -5,6 +5,6 @@
     % JW, Created for MAST30013 Project, 2021/05/15
 %% Parameters
 nmbrRelayInitialLoc = 5;
-nmbrSensorSets = 5;
+nmbrSensorSets = 2;
 nmbrAlgorithms = 3;
 sensorQuantity = [3, 6, 12, 24, 48, 96, 192, 384];
