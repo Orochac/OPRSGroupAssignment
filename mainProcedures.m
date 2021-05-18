@@ -47,6 +47,6 @@ for i=1:nmbrRelayInitialLoc
         end
     end
 end
-resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'SensorSetNmbr', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofFcal', 'RunTime'}
+resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'sensorScenario', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofFcal', 'RunTime'}
 %% Export results to csv file
 writetable(resultSummary, 'resultSummary.txt', 'Delimiter', ',')
