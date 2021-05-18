@@ -33,7 +33,7 @@ for i=1:nmbrRelayInitialLoc
 					case 4 % Algorithm 4
                         [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Place Holder'};
-                    case 5 % Algorithm 4
+                    case 5 % Algorithm 5
                         [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Place Holder'};
                 end
