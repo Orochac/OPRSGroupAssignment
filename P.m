@@ -11,9 +11,9 @@
 % This function calcuates the required power of the relay 
 % value of P(s) given the sensor locations
 function [f] = P(s, nmbrSensors, sensorLocations)
-    distances = zeros(nmbrSensors, 1);
+    sqrdDistances = zeros(nmbrSensors, 1);
     for i=1:nmbrSensors
-        distances(i) = Distance(s, sensorLocations(i,:));
+        sqrdDistances(i) = Distance(s, sensorLocations(i,:))^2;
     end
-    f = sum(distances) + max(distances);
+    f = sum(sqrdDistances) + max(sqrdDistances);
 end

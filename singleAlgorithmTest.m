@@ -9,6 +9,7 @@ clear
 nmbrRelayInitialLoc = 1;
 nmbrSensorSets = 1;
 nmbrAlgorithms = 1;
+sensorLength = 2;
 sensorQuantity = [3, 6, 12, 24, 48, 96, 192, 384];
 %% Generate instances, run algorithms and stores results
 resultSummary = table; % create empty table for storing results
@@ -16,15 +17,15 @@ for i=1:nmbrRelayInitialLoc
     s0 = rand(1, 2); % random start location from (0,0) to (1,1)
     for j = 1:nmbrSensorSets
         sensorSet = [transpose(1:max(sensorQuantity)),rand(max(sensorQuantity),2)];
-        for k=1:length(sensorQuantity)
+        for k=1:sensorLength
             s0;
             nmbrSensors = sensorQuantity(1,k);
             sensorLocations = sensorSet(1:nmbrSensors, 2:3);
             for l=1:nmbrAlgorithms;
                 % Run algorithm here
                 timerStart1 = tic;
-                [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations);
-                nameAlgorithm = {'montecarlo'};
+                [smin, fmin, k] = I2(s0, nmbrSensors, sensorLocations);
+                nameAlgorithm = {'I2'};
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
                 s0Str = convertCoordntToStr(s0);
