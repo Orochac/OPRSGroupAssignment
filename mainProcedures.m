@@ -10,7 +10,7 @@ getParameters;
 %% Generate instances, run algorithms and stores results
 resultSummary = table; % create empty table for storing results
 for i=1:nmbrRelayInitialLoc
-    s0 = rand(1, 2); % random start location from (0,0) to (1,1)
+    [s0, initialRelayScenario] = generateInitialRelay(i)
     for j = 1:nmbrSensorSets
 		[sensorSet, sensorScenario] = generateSensorSet(sensorQuantity, j);
         for k=1:length(sensorQuantity)
