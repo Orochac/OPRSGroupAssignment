@@ -14,7 +14,6 @@ for i=1:nmbrRelayInitialLoc
     for j = 1:nmbrSensorSets
 		[sensorSet, sensorScenario] = generateSensorSet(sensorQuantity, j);
         for k=1:length(sensorQuantity)
-            s0;
             nmbrSensors = sensorQuantity(1,k);
             sensorLocations = sensorSet(1:nmbrSensors, 2:3);
             for l=1:nmbrAlgorithms;
