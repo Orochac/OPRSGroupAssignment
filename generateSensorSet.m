@@ -43,5 +43,4 @@ function [sensorSet, sensorScenario] = generateSensorSet(sensorQuantity, j)
             sensorSet = [transpose(1:max(sensorQuantity)),sensorLocations];
             sensorScenario = {'Clustered - Centre'};
     end
-    % scatter(sensorLocations(:,1), sensorLocations(:,2)) % visualise sensor locations
 end
