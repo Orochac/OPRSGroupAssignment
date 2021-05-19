@@ -41,12 +41,12 @@ for i=1:nmbrRelayInitialLoc
                 % Store results
                 s0Str = convertCoordntToStr(s0);
                 sminStr = convertCoordntToStr(smin);
-                resultTemp = table(s0Str, sensorScenario, nmbrSensors, nameAlgorithm, sminStr, fmin, k, timeElapsed1); %table for storing results
+                resultTemp = table(initialRelayScenario, sensorScenario, nmbrSensors, nameAlgorithm, sminStr, fmin, k, timeElapsed1); %table for storing results
                 resultSummary = [resultSummary; resultTemp];
             end
         end
     end
 end
-resultSummary.Properties.VariableNames = {'RelayInitialLocation', 'sensorScenario', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofFcal', 'RunTime'}
+resultSummary.Properties.VariableNames = {'initialRelayScenario', 'sensorScenario', 'NmbrofSensors', 'Algorithm', 'smin', 'fmin', 'NmbrofFcal', 'RunTime'}
 %% Export results to csv file
 writetable(resultSummary, 'resultSummary.txt', 'Delimiter', ',')
