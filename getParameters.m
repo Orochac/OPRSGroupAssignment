@@ -11,6 +11,6 @@ plotFigureInd1 = false; % indicator for whether or not to plot Initial Relay And
 % system parameters should only be modified by developers of the main procedures
 nmbrInitialRelayScenario = 4; % developer must match this number with the number of cases in generateInitialRelay.m
 nmbrSensorSets = 3; % developer must match this number with the number of cases in generateSensorSet.m
-nmbrAlgorithms = 5; % developer must match this number with the number of algorithm cases in the mainProcedures.m
+nmbrAlgorithms = 3; % developer must match this number with the number of algorithm cases in the mainProcedures.m
 %% Calculated Parameters
 nmbrRelayInitialLoc = nmbrSimPerInitialRelayScenario * nmbrInitialRelayScenario;
