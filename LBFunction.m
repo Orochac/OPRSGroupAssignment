@@ -17,10 +17,10 @@ function [f] = LBFunction(s, nmbrSensors, sensorLocations, farthestSensor, alpha
     sqrdDistances = zeros(nmbrSensors, 1);
     FSdistance = Distance(s, farthestSensor)^2;
     for i=1:nmbrSensors%the initial P(s) with specified farthest sensor
-        sqrdDistances(i) = Distance(s, sensorLocations(i,:))^2;;
+        sqrdDistances(i) = Distance(s, sensorLocations(i,:))^2;
     end
     f = sum(sqrdDistances) + FSdistance;
     for i = 1:nmbrSensors %additional contraints for the LB method
-        f = f + (1/alpha)*((log(-(sqrdDistances(i)-FSdistance)^2));
+        f = f - (1/alpha)*(log(-((sqrdDistances(i)-FSdistance)^2)));
     end
 end

@@ -9,9 +9,9 @@
     % k: number of iterations
 % version history:
     % LQ, Created for MAST30013 Project, 2021/05/21
-%% I2 penalty function, 
-% This is the I2 penalty method with the variable alpha
-function [smin, fmin, k] = IB(s0, nmbrSensors, sensorLocations)
+%% LB penalty function, 
+% This is the LB penalty method with the variable alpha
+function [smin, fmin, k] = LB(s0, nmbrSensors, sensorLocations)
     alpha = 100;%alpha value
     k =0;
     %good = 0;
