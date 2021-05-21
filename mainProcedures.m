@@ -26,19 +26,19 @@ for i=1:nmbrRelayInitialLoc
                 switch l
                     case 1 % Algorithm 1
                         [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Monte Carlo'};
+                        nameAlgorithm = {'Monte Carlo'}
                     case 2 % Algorithm 2
-                        [smin, fmin, k] = singleGuess(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Single Guess'};
+                        [smin, fmin, k] = I2(s0, nmbrSensors, sensorLocations);
+                        nameAlgorithm = {'l2'}
                     case 3 % Algorithm 3
                         [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Nelder-Mead Simplex'};
-					case 4 % Algorithm 4
-                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Place Holder'};
-                    case 5 % Algorithm 5
-                        [smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Place Holder'};
+                        nameAlgorithm = {'Nelder-Mead Simplex'}
+					%case 4 % Algorithm 4
+                        %[smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        %nameAlgorithm = {'Place Holder'};
+                    %case 5 % Algorithm 5
+                        %[smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
+                        %nameAlgorithm = {'Place Holder'};
                 end
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results

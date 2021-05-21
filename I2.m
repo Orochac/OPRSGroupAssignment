@@ -12,16 +12,25 @@
 %% I2 penalty function, 
 % This is the I2 penalty method with the variable alpha
 function [smin, fmin, k] = I2(s0, nmbrSensors, sensorLocations)
-    alpha = 10;%alpha value
+    alpha = 100;%alpha value
     k =0;
-    fscores = zeros(nmbrSensors, 1);%create vector of each result
-    slocations = zeros(nmbrSensors, 2);%create matrix of relay locations
-    for i = 1:nmbrSensors %need to minimise each of the cases
-        farthestSensor = sensorLocations(i,:);
-        [slocations(i,:), fscores(i), itter] = I2Optimise(s0, nmbrSensors, sensorLocations, farthestSensor, alpha);
+    %good = 0;
+    valid = convhull(sensorLocations(:,1),sensorLocations(:,2));%find valid cases
+    fscores = zeros(size(valid,1), 1);%create vector of each result
+    slocations = zeros(size(valid,1), 2);%create matrix of relay locations
+    for i = 1:size(valid,1) %need to minimise each of the cases
+        farthestSensor = sensorLocations(valid(i),:);
+        [temp, fscores(i), itter] = I2SteepDesc(s0, nmbrSensors, sensorLocations, farthestSensor, alpha);%need temp
         k = k+itter;
-        %check if valid
+        if 0<=temp(1)&&temp(1)<=1 &&0<=temp(2)&&temp(2)<=1
+            %good = good + 1;
+            slocations(i,:) = temp;
+        else
+            slocations(i,:) = s0;
+        end
     end
+    %good
+    %slocations
     [fmin, I] = min(fscores);
     smin = slocations(I,:);
 end

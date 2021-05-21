@@ -16,9 +16,12 @@
 % This is a function to identify a valid step size
 function t = I2StepMin(s, d, nmbrSensors, sensorLocations, farthestSensor, alpha)
    function f = stepSize(t)
-       f = I2Function(s+t*transpose(d), nmbrSensors, sensorLocations, farthestSensor, alpha);
+       f = I2Function(s+t.*transpose(d), nmbrSensors, sensorLocations, farthestSensor, alpha);
    end
-   tlo = 0;
-   thigh = 10;
-   t = fminbnd(@stepSize,tlo,thigh)
+   X = 0:0.01:2;
+   Y = stepSize(X);
+   plot(X,Y)
+   tlo = 0.001;
+   thigh = 2;
+   t = fminbnd(@stepSize,tlo,thigh);
 end
