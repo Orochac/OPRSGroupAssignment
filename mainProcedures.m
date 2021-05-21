@@ -33,9 +33,9 @@ for i=1:nmbrRelayInitialLoc
                     case 3 % Algorithm 3
                         [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Nelder-Mead Simplex'}
-					%case 4 % Algorithm 4
-                        %[smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
-                        %nameAlgorithm = {'Place Holder'};
+					case 4 % Algorithm 4
+                        [smin, fmin, k] = LB(s0, nmbrSensors, sensorLocations);
+                        nameAlgorithm = {'Log Barrier'};
                     %case 5 % Algorithm 5
                         %[smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
                         %nameAlgorithm = {'Place Holder'};
