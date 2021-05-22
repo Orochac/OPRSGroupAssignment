@@ -4,7 +4,8 @@
 % version history:
     % JW, Created for MAST30013 Project, 2021/05/15
 %% Prepare environment
-clear
+clc;
+clear;
 prepareFolderForFigures;
 %% Get parameters
 getParameters;
