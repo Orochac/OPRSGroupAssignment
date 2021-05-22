@@ -12,6 +12,7 @@ getParameters;
 %% Generate instances, run algorithms and stores results
 resultSummary = table; % create empty table for storing results
 for i=1:nmbrRelayInitialLoc
+    i % debug print during execution, for monitoring progress
     [s0, initialRelayScenario] = generateInitialRelay(i, nmbrRelayInitialLoc);
     for j = 1:nmbrSensorSets
 		[sensorSet, sensorScenario] = generateSensorSet(sensorQuantity, j);
@@ -27,19 +28,16 @@ for i=1:nmbrRelayInitialLoc
                 switch l
                     case 1 % Algorithm 1
                         [smin, fmin, k] = montecarlo(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Monte Carlo'}
+                        nameAlgorithm = {'Monte Carlo'};
                     case 2 % Algorithm 2
                         [smin, fmin, k] = I2(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'l2'}
+                        nameAlgorithm = {'l2'};
                     case 3 % Algorithm 3
                         [smin, fmin, k] = NelderMeadSimplex(s0, nmbrSensors, sensorLocations);
-                        nameAlgorithm = {'Nelder-Mead Simplex'}
+                        nameAlgorithm = {'Nelder-Mead Simplex'};
 					case 4 % Algorithm 4
                         [smin, fmin, k] = LB(s0, nmbrSensors, sensorLocations);
                         nameAlgorithm = {'Log Barrier'};
-                    %case 5 % Algorithm 5
-                        %[smin, fmin, k] = sampleAlgorithm(s0, nmbrSensors, sensorLocations);
-                        %nameAlgorithm = {'Place Holder'};
                 end
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
