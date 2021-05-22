@@ -25,7 +25,7 @@ function [smin, fmin, k] = LBSteepDesc(s0, nmbrSensors, sensorLocations, farthes
         s1 = transpose(s)+t*d;
         s = transpose(s1);
         k=k+1;
-        if k > 2
+        if k > 20
             break
         end
     end
