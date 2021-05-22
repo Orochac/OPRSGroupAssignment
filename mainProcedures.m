@@ -44,6 +44,7 @@ for i=1:nmbrRelayInitialLoc
                 % Store results
                 s0Str = convertCoordntToStr(s0);
                 sminStr = convertCoordntToStr(smin);
+                fmin = compose("%0.7f",fmin);
                 resultTemp = table(initialRelayScenario, sensorScenario, nmbrSensors, nameAlgorithm, sminStr, fmin, k, timeElapsed1); %table for storing results
                 resultSummary = [resultSummary; resultTemp];
             end
