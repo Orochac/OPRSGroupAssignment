@@ -18,14 +18,14 @@ function [smin, fmin, k] = LBSteepDesc(s0, nmbrSensors, sensorLocations, farthes
     k=0;
     s = s0;
     while norm(LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha))>= epsilon
-        norm(LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha));
-        LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha);
+        norm(LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha))
+        LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha)
         d = -LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha);
         t = LBStepMin(s, d, nmbrSensors, sensorLocations, farthestSensor, alpha);
         s1 = transpose(s)+t*d;
         s = transpose(s1);
         k=k+1;
-        if k > 2
+        if k > 20
             break
         end
     end

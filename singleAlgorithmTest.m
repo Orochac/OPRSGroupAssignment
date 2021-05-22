@@ -24,8 +24,8 @@ for i=1:nmbrRelayInitialLoc
             for l=1:nmbrAlgorithms;
                 % Run algorithm here
                 timerStart1 = tic;
-                [smin, fmin, k] = I2(s0, nmbrSensors, sensorLocations);
-                nameAlgorithm = {'I2'};
+                [smin, fmin, k] = LB(s0, nmbrSensors, sensorLocations);
+                nameAlgorithm = {'LB'};
                 timeElapsed1 = toc(timerStart1)*1000; % unit: millisecond
                 % Store results
                 s0Str = convertCoordntToStr(s0);

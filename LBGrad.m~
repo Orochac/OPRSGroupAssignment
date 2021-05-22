@@ -14,21 +14,21 @@
 function [f] = LBGrad(s, nmbrSensors, sensorLocations, farthestSensor, alpha)
     f1 = 0;
     f2 = 0;
-    for j=1:nmbrSensors%the initial gradP(s) with specified farthest sensor
-        f1 = f1 + 2*(s(1)-sensorLocations(j,1));
-        f2 = f2 + 2*(s(2)-sensorLocations(j,2));
+    for i=1:nmbrSensors%the initial gradP(s) with specified farthest sensor
+        f1 = f1 + 2*(s(1)-sensorLocations(i,1));
+        f2 = f2 + 2*(s(2)-sensorLocations(i,2));
     end
     f1 = f1 + 2*(s(1)-farthestSensor(1));
     f2 = f2 + 2*(s(2)-farthestSensor(2));
     for i = 1:nmbrSensors %additional contraints for the LB method
-        g = Distance(s, sensorLocations(i,:))^2 - Distance(s, farthestSensor)^2;
-        if g==0
+        if sensorLocations(i,:)==farthestSensor
             continue
         end
+        g = Distance(s, sensorLocations(i,:))^2 - Distance(s, farthestSensor)^2;
         gradg1 = 2*(s(1)*(farthestSensor(1)-sensorLocations(i,1)));
         f1 = f1 - (1/(alpha*g))*gradg1;
         gradg2 = 2*(s(2)*(farthestSensor(2)-sensorLocations(i,2)));
-        f2 = f2 -(1/(alpha*g))*gradg2;
+        f2 = f2 - (1/(alpha*g))*gradg2;
     end
     f = [f1; f2];
 end

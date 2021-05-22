@@ -21,9 +21,8 @@ function [f] = LBFunction(s, nmbrSensors, sensorLocations, farthestSensor, alpha
     end
     f = sum(sqrdDistances) + FSdistance;
     for i = 1:nmbrSensors %additional contraints for the LB method
-        if sqrdDistances(i)-FSdistance == 0
-            continue
-        end
+        if (sqrdDistances(i)-FSdistance)^2) == 0
+            
         f = f - (1/alpha)*(log(-((sqrdDistances(i)-FSdistance)^2)));
     end
 end
