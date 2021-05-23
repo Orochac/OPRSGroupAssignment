@@ -4,7 +4,7 @@
 % version history:
     % JW, Created for MAST30013 Project, 2021/05/15
 %% User Defined Parameters
-nmbrSimPerInitialRelayScenario = 10; % number of simulations per initial relay scenario
+nmbrSimPerInitialRelayScenario = 1000; % number of simulations per initial relay scenario
 sensorQuantity = [3, 6, 12, 24, 48, 96, 192, 384];
 plotFigureInd1 = false; % indicator for whether or not to plot Initial Relay And Sensor Locations; figures will be saved in folder: figuresInitialRelayAndSensorLoc
 %% System parameters
